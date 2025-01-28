@@ -1,0 +1,112 @@
+.faqItem {
+  margin-bottom: 1rem;
+  border: 1px solid #90A99E; /* גבול דק יותר בצבע ירוק עדין */
+  border-radius: 8px;
+  overflow: hidden;
+  width: 500px;
+  margin: 15px auto;
+  direction: rtl;
+  box-shadow: 0 1px 2px rgba(144, 169, 158, 0.1); /* צל עדין יותר */
+  text-decoration: none;
+  background-color: white;
+}
+
+.questionButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: white;
+  border: none;
+  text-decoration: none;
+  color: #90A99E; /* צבע טקסט ירוק עדין */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.questionButton:hover {
+  background-color: #fafafa; /* רקע אפור בהיר מאוד במעבר עכבר */
+}
+
+.questionText {
+  font-family: 'AssistantR', sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #90A99E; /* צבע טקסט ירוק עדין */
+  direction: rtl;
+  flex-grow: 1;
+}
+
+.iconWrapper {
+  width: 24px;
+  flex-shrink: 0;
+  color: #90A99E; /* צבע אייקון ירוק עדין */
+  text-decoration: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.answerContainer {
+  overflow: hidden;
+  transition: height 0.3s ease;
+  background-color: white;
+  margin: auto;
+  direction: rtl;
+}
+
+.answerText {
+  font-family: 'AssistantR', sans-serif;
+  font-size: 1.05rem;
+  padding: 1rem;
+  color: #666666; /* צבע טקסט אפור בהיר יותר */
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+}
+
+/* Accent for links or important text within answers */
+.answerText a, .answerText strong {
+  color: #90A99E; /* צבע טקסט מודגש ירוק עדין */
+}
+
+/* Responsive styles */
+@media (max-width: 350px) {
+  .faqItem {
+    width: 280px;
+  }
+  .questionText {
+    font-size: 1rem;
+  }
+  .answerText {
+    font-size: 0.9rem; 
+  }
+}
+
+@media (min-width: 350px) and (max-width: 450px) {
+  .faqItem {
+    width: 320px;
+  }
+  .questionText {
+    font-size: 1.05rem;
+  }
+  .answerText {
+    font-size: 0.95rem; 
+  }
+}
+
+@media (min-width: 450px) and (max-width: 550px) {
+  .faqItem {
+    width: 400px;
+  }
+  .questionText {
+    font-size: 1.1rem;
+  }
+  .answerText {
+    font-size: 1rem; 
+  }
+}
