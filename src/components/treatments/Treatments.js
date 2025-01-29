@@ -33,20 +33,29 @@ const VideoWithThumbnail = ({ videoSource, className }) => {
       }, 'image/jpeg', 1.0);
     };
 
-    const handleLoadedMetadata = () => {
+    const handleLoadedData = () => {
+      // Set video time only after it's loaded
       video.currentTime = 0.1;
     };
 
-    const handleError = () => {
+    const handleCanPlay = () => {
+      // Video is ready to play, remove loading state
       setIsLoading(false);
     };
 
-    video.addEventListener('loadedmetadata', handleLoadedMetadata);
+    const handleError = () => {
+      console.error('Error loading video');
+      setIsLoading(false);
+    };
+
+    video.addEventListener('loadeddata', handleLoadedData);
+    video.addEventListener('canplay', handleCanPlay);
     video.addEventListener('seeked', generateThumbnail, { once: true });
     video.addEventListener('error', handleError);
     
     return () => {
-      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      video.removeEventListener('loadeddata', handleLoadedData);
+      video.removeEventListener('canplay', handleCanPlay);
       video.removeEventListener('seeked', generateThumbnail);
       video.removeEventListener('error', handleError);
       if (thumbnailUrl) {
