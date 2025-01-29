@@ -3,15 +3,15 @@ import styles from './Treatments.module.css';
 import acne from "../../videos/ילנה סרטון אקנה.mp4";
 import makeup from "../../videos/ילנה סרטון מייקאפ.mp4";
 import aging from "../../videos/ילנה סרטון פיגמנטציה.mp4";
+import mahshir from "../../images/ילנה תמונה מכשיר.png";
 import acneImage from "../../images/אקנה.png";
 import antiagingImage from "../../images/אנטי אייגינג.png";
 import makeupImage from "../../images/אקנה.png";
 import agingImage from "../../images/אייגינג.png";
-import Button from "../button/Button";
+import Button from "../button/Button"
 
 const VideoWithThumbnail = ({ videoSource, className }) => {
   const [thumbnailUrl, setThumbnailUrl] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -29,35 +29,19 @@ const VideoWithThumbnail = ({ videoSource, className }) => {
         const url = URL.createObjectURL(blob);
         setThumbnailUrl(url);
         video.style.opacity = '1';
-        setIsLoading(false);
       }, 'image/jpeg', 1.0);
     };
 
-    const handleLoadedData = () => {
-      // Set video time only after it's loaded
+    const handleLoadedMetadata = () => {
       video.currentTime = 0.1;
     };
 
-    const handleCanPlay = () => {
-      // Video is ready to play, remove loading state
-      setIsLoading(false);
-    };
-
-    const handleError = () => {
-      console.error('Error loading video');
-      setIsLoading(false);
-    };
-
-    video.addEventListener('loadeddata', handleLoadedData);
-    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('loadedmetadata', handleLoadedMetadata);
     video.addEventListener('seeked', generateThumbnail, { once: true });
-    video.addEventListener('error', handleError);
     
     return () => {
-      video.removeEventListener('loadeddata', handleLoadedData);
-      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
       video.removeEventListener('seeked', generateThumbnail);
-      video.removeEventListener('error', handleError);
       if (thumbnailUrl) {
         URL.revokeObjectURL(thumbnailUrl);
       }
@@ -65,45 +49,16 @@ const VideoWithThumbnail = ({ videoSource, className }) => {
   }, []);
 
   return (
-    <div className={styles.videoContainer}>
-      {isLoading && (
-        <div className={styles.loaderContainer}>
-          <div className={styles.loaderContent}>
-            <svg 
-              className={styles.loaderIcon} 
-              xmlns="http://www.w3.org/2000/svg" 
-              fill="none" 
-              viewBox="0 0 24 24"
-            >
-              <circle 
-                className={styles.opacity-25} 
-                cx="12" 
-                cy="12" 
-                r="10" 
-                stroke="currentColor" 
-                strokeWidth="4"
-              />
-              <path 
-                className={styles.opacity-75} 
-                fill="currentColor" 
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              />
-            </svg>
-            <p className={styles.loaderText}>טוען סרטון...</p>
-          </div>
-        </div>
-      )}
-      <video 
-        ref={videoRef}
-        controls 
-        className={`${className} ${isLoading ? styles.invisible : styles.visible}`}
-        style={{ transition: 'opacity 0.3s ease' }}
-        src={videoSource}
-        poster={thumbnailUrl}
-      >
-        <source src={videoSource} type="video/mp4" />
-      </video>
-    </div>
+    <video 
+      ref={videoRef}
+      controls 
+      className={className}
+      style={{ transition: 'opacity 0.3s ease' }}
+      src={videoSource}
+      poster={thumbnailUrl}
+    >
+      <source src={videoSource} type="video/mp4" />
+    </video>
   );
 };
 
@@ -111,7 +66,7 @@ const Treatments = () => {
   const treatments = [
     {
       title: 'טיפול באקנה',
-      targetAudience: 'בני נוער +18',
+      targetAudience: '+18',
       description: 'טיפול מותאם אישית לפתרון בעיות אקנה ופצעים',
       stages: [
         'אבחון מצב העור וסוג האקנה',
@@ -127,10 +82,10 @@ const Treatments = () => {
         'מראה טבעי ובריא'
       ],
       problems: [
-        'חוסר ביטחון',
+    
         'פצעים ודלקות',
-        'קושי חברתי',
-        'תסכול מטיפולים קודמים'
+        'צלקות שנשארו מהפצעים',
+
       ],
       videoId: acne,
       mainImage: acneImage
@@ -179,7 +134,7 @@ const Treatments = () => {
         'עור בריא ומטופח'
       ],
       problems: [
-        'עור בוגר',
+   
         'קמטים עמוקים',
         'צניחת העור',
         'כתמי גיל'
