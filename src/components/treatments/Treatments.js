@@ -3,15 +3,15 @@ import styles from './Treatments.module.css';
 import acne from "../../videos/ילנה סרטון אקנה.mp4";
 import makeup from "../../videos/ילנה סרטון מייקאפ.mp4";
 import aging from "../../videos/ילנה סרטון פיגמנטציה.mp4";
-import mahshir from "../../images/ילנה תמונה מכשיר.png";
 import acneImage from "../../images/אקנה.png";
 import antiagingImage from "../../images/אנטי אייגינג.png";
 import makeupImage from "../../images/אקנה.png";
 import agingImage from "../../images/אייגינג.png";
-import Button from "../button/Button"
+import Button from "../button/Button";
 
 const VideoWithThumbnail = ({ videoSource, className }) => {
   const [thumbnailUrl, setThumbnailUrl] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -29,6 +29,7 @@ const VideoWithThumbnail = ({ videoSource, className }) => {
         const url = URL.createObjectURL(blob);
         setThumbnailUrl(url);
         video.style.opacity = '1';
+        setIsLoading(false);
       }, 'image/jpeg', 1.0);
     };
 
@@ -36,12 +37,18 @@ const VideoWithThumbnail = ({ videoSource, className }) => {
       video.currentTime = 0.1;
     };
 
+    const handleError = () => {
+      setIsLoading(false);
+    };
+
     video.addEventListener('loadedmetadata', handleLoadedMetadata);
     video.addEventListener('seeked', generateThumbnail, { once: true });
+    video.addEventListener('error', handleError);
     
     return () => {
       video.removeEventListener('loadedmetadata', handleLoadedMetadata);
       video.removeEventListener('seeked', generateThumbnail);
+      video.removeEventListener('error', handleError);
       if (thumbnailUrl) {
         URL.revokeObjectURL(thumbnailUrl);
       }
@@ -49,16 +56,45 @@ const VideoWithThumbnail = ({ videoSource, className }) => {
   }, []);
 
   return (
-    <video 
-      ref={videoRef}
-      controls 
-      className={className}
-      style={{ transition: 'opacity 0.3s ease' }}
-      src={videoSource}
-      poster={thumbnailUrl}
-    >
-      <source src={videoSource} type="video/mp4" />
-    </video>
+    <div className={styles.videoContainer}>
+      {isLoading && (
+        <div className={styles.loaderContainer}>
+          <div className={styles.loaderContent}>
+            <svg 
+              className={styles.loaderIcon} 
+              xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24"
+            >
+              <circle 
+                className={styles.opacity-25} 
+                cx="12" 
+                cy="12" 
+                r="10" 
+                stroke="currentColor" 
+                strokeWidth="4"
+              />
+              <path 
+                className={styles.opacity-75} 
+                fill="currentColor" 
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
+            </svg>
+            <p className={styles.loaderText}>טוען סרטון...</p>
+          </div>
+        </div>
+      )}
+      <video 
+        ref={videoRef}
+        controls 
+        className={`${className} ${isLoading ? styles.invisible : styles.visible}`}
+        style={{ transition: 'opacity 0.3s ease' }}
+        src={videoSource}
+        poster={thumbnailUrl}
+      >
+        <source src={videoSource} type="video/mp4" />
+      </video>
+    </div>
   );
 };
 
