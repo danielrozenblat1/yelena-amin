@@ -1,64 +1,22 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import styles from './Treatments.module.css';
-import acne from "../../videos/ילנה סרטון אקנה.mp4";
-import makeup from "../../videos/ילנה סרטון מייקאפ.mp4";
-import aging from "../../videos/ילנה סרטון פיגמנטציה.mp4";
-import mahshir from "../../images/ילנה תמונה מכשיר.png";
-import acneImage from "../../images/אקנה.png";
-import antiagingImage from "../../images/אנטי אייגינג.png";
+import acneImage from "../../images/אקנה חדש.jpg";
+import antiagingImage from "../../images/אנטי אייג'יינג חדש.jpg";
 import makeupImage from "../../images/אקנה.png";
-import agingImage from "../../images/אייגינג.png";
-import Button from "../button/Button"
+import agingImage from "../../images/אייג'ינג חדש.png";
+import Button from "../button/Button";
 
-const VideoWithThumbnail = ({ videoSource, className }) => {
-  const [thumbnailUrl, setThumbnailUrl] = useState('');
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    video.style.opacity = '0';
-    
-    const generateThumbnail = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-      
-      canvas.toBlob((blob) => {
-        const url = URL.createObjectURL(blob);
-        setThumbnailUrl(url);
-        video.style.opacity = '1';
-      }, 'image/jpeg', 1.0);
-    };
-
-    const handleLoadedMetadata = () => {
-      video.currentTime = 0.1;
-    };
-
-    video.addEventListener('loadedmetadata', handleLoadedMetadata);
-    video.addEventListener('seeked', generateThumbnail, { once: true });
-    
-    return () => {
-      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      video.removeEventListener('seeked', generateThumbnail);
-      if (thumbnailUrl) {
-        URL.revokeObjectURL(thumbnailUrl);
-      }
-    };
-  }, []);
-
+const YouTubeShort = ({ embedId, className }) => {
   return (
-    <video 
-      ref={videoRef}
-      controls 
-      className={className}
-      style={{ transition: 'opacity 0.3s ease' }}
-      src={videoSource}
-      poster={thumbnailUrl}
-    >
-      <source src={videoSource} type="video/mp4" />
-    </video>
+    <div className={`${styles.videoWrapper} ${className}`}>
+      <iframe
+        src={`https://www.youtube.com/embed/${embedId}`}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        className={styles.youtubeIframe}
+      />
+    </div>
   );
 };
 
@@ -66,14 +24,14 @@ const Treatments = () => {
   const treatments = [
     {
       title: 'טיפול באקנה',
-      targetAudience: '+18',
+      targetAudience: 'בני נוער, מתבגרים ולמי שסובל מאקנה גם בגיל בוגר',
       description: 'טיפול מותאם אישית לפתרון בעיות אקנה ופצעים',
       stages: [
         'אבחון מצב העור וסוג האקנה',
         'תיאום ציפיות ובניית תכנית טיפול',
         'טיפול ראשוני והנחיות להמשך',
         'הדרכה לטיפול ביתי',
-        'מעקב והתאמת הטיפול'
+        'מעקב והתאמת הטיפול בהתאם לתוצאות'
       ],
       benefits: [
         'שיפור משמעותי במראה העור',
@@ -82,12 +40,11 @@ const Treatments = () => {
         'מראה טבעי ובריא'
       ],
       problems: [
-    
-        'פצעים ודלקות',
-        'צלקות שנשארו מהפצעים',
-
+        'פצעי אקנה בכמות מוגברת',
+        'צלקות כתוצאה מחטטת בעור',
+        'דלקות שנשארו מהפצעים',
       ],
-      videoId: acne,
+      youtubeId: 'Ih18O0xc_-I',
       mainImage: acneImage
     },
     {
@@ -113,16 +70,17 @@ const Treatments = () => {
         'עור עייף',
         'חוסר אחידות בגוון העור'
       ],
-      videoId: aging,
+      youtubeId: 'i1SSwE4TpNE',
       mainImage: antiagingImage
     },
     {
-      title: 'אייג׳ינג',
+      title: 'פרואייג׳ינג',
       targetAudience: 'נשים +45',
       description: 'טיפול מתקדם להתחדשות העור',
       stages: [
         'הערכת מצב העור',
         'טיפול בסימני גיל מתקדמים',
+        'טיפול בכתמי פיגמנטציה',
         'שיפור מרקם העור',
         'הזנה אינטנסיבית',
         'תחזוקה והגנה'
@@ -130,16 +88,16 @@ const Treatments = () => {
       benefits: [
         'שיפור מרקם העור',
         'העלמת כתמי גיל',
+        'הבהרת העור',
         'מראה רענן וחיוני',
         'עור בריא ומטופח'
       ],
       problems: [
-   
         'קמטים עמוקים',
         'צניחת העור',
         'כתמי גיל'
       ],
-      videoId: makeup,
+      youtubeId: 'xhHbLpDKkm0',
       mainImage: agingImage
     }
   ];
@@ -161,6 +119,7 @@ const Treatments = () => {
                 <h2 className={styles.title}>{treatment.title}</h2>
                 <div className={styles.audience}>מיועד ל: {treatment.targetAudience}</div>
               </div>
+              
               <p className={styles.description}>{treatment.description}</p>
               
               <div className={styles.section}>
@@ -192,8 +151,8 @@ const Treatments = () => {
 
               <div className={styles.videoSection}>
                 <h3 className={styles.sectionTitle}>קצת ממני על הטיפול:</h3>
-                <VideoWithThumbnail 
-                  videoSource={treatment.videoId}
+                <YouTubeShort 
+                  embedId={treatment.youtubeId}
                   className={styles.video}
                 />
                 <div className={styles.buttonContainer}>

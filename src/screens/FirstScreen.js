@@ -45,7 +45,7 @@ const FirstScreen = () => {
       </div>
       
       <div className={styles.contentBox}>
-        <h1 className={styles.title}>YELENA AMIN</h1>
+        <h1 className={styles.title}>ילנה אמין</h1>
         <div className={styles.description}>טיפולים קוסמטים שיעזרו לך להשיג עור בריא,זוהר וחלק</div>
         <div className={styles.arrowContainer}>
           <ChevronDown size={32} className={styles.bounceArrow} strokeWidth={1}/>
