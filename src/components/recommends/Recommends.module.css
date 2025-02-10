@@ -29,9 +29,9 @@
     object-fit: cover;
   }
   .title{
-    font-size:3.5rem;
+    font-size:2.5rem;
     direction: rtl;
-    width:65%;
+ 
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     color:black;
     justify-content: center;

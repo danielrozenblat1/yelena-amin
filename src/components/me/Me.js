@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './Me.module.css';
 import yelena from "../../images/ילנה אמין תדמית.png"
 import Button from '../button/Button';
+import Recommends from '../recommends/Recommends';
+import BeforeAfter from '../recommends/BeforeAfter';
 const AboutYelena = () => {
   return (
     <>
@@ -26,6 +28,8 @@ const AboutYelena = () => {
           </p>
         </div>
       </div>
+      <Recommends/>
+      <BeforeAfter/>
       <Button text="ילנה, אני רוצה לתאם טיפול" message="היי ילנה הגעתי מהדף, אשמח לתאם איתך טיפול.."/>
     </>
   );

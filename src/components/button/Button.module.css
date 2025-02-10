@@ -45,7 +45,7 @@
 }
 
 .button:hover {
-  background-color: rgba(150, 168, 148, 0.95);
+  background-color: rgba(99, 129, 96, 0.95);
   color: #FDF5F1;
   transform: translateY(-2px);
   box-shadow: 

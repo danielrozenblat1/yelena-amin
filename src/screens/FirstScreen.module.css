@@ -45,7 +45,7 @@
   }
   
   .centerImage {
-    background-image: url('../images/ילנה\ אמין\ תמונה\ מרכזית.png');
+    background-image: url('../images/ילנה\ אמין\ תמונה\ ראשית.png');
   }
   
   .contentBox {
@@ -197,11 +197,11 @@
   @media (min-width: 550px) {
     .leftImage {
       display: block;
-      background-image: url('../images/ילנה\ אמין\ תמונה\ שמאל.png');
+      background-image: url('../images/ילנה\ אמין\ תמונה\ ימין.png');
     }
     .rightImage {
       display: block;
-      background-image: url('../images/ילנה\ אמין\ תמונה\ ימין.png');
+      background-image: url('../images/ילנה\ אמין\ תמונה\ מרכזית.png');
     }
     .contentBox {
       padding: 2rem;

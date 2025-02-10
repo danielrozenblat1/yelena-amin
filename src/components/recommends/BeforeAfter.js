@@ -1,4 +1,4 @@
-import styles from "./BeforeAfter.module.css"
+import styles from "./Recommends.module.css"
 import result1 from "../../images/ילנה אמין לפני אחרי 1.png"
 import result2 from "../../images/ילנה אמין לפני אחרי 2.png"
 import result3 from "../../images/ילנה אמין לפני אחרי 3.png"
@@ -17,8 +17,8 @@ import result15 from  "../../images/ילנה אמין לפני אחרי 15.png"
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Button from "../button/Button"
-const Recommends=()=>{
+
+const BeforeAfter=()=>{
     const sliderSettings = {
      
         infinite: true,
@@ -98,13 +98,13 @@ const Recommends=()=>{
           },
         ];  
 return <>
-<div className={styles.title} id="לקוחות ממליצות">תשמעי קצת מהן</div>
+<div className={styles.title} id="לקוחות ממליצות">ואיך אפשר בלי קצת תוצאות</div>
 <div className={styles.sliderContainer}>
         <Slider {...sliderSettings}>
           {content.map((item, index) => (
             <div key={index} itemscope itemtype="http://schema.org/Review">
               {item.type === 'image' && (
-                <img src={item.src} className={styles.image1} alt={`מאי שושן לקוחה ממליצה מספר ${index + 1}`} itemprop="image"/>
+                <img src={item.src} className={styles.image1} alt={`ילנה אמין לקוחה ממליצה מספר ${index + 1}`} itemprop="image"/>
               )}
               {item.type === 'video' && (
                 <video
@@ -126,9 +126,9 @@ return <>
         </Slider>
       </div>
 
-<Button text="מאי אני רוצה לשמוע עוד"/>
+
 </>
 
 
 }
-export default Recommends
+export default BeforeAfter
