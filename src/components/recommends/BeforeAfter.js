@@ -1,19 +1,26 @@
 import styles from "./Recommends.module.css"
-import result1 from "../../images/ילנה אמין לפני אחרי 1.png"
-import result2 from "../../images/ילנה אמין לפני אחרי 2.png"
-import result3 from "../../images/ילנה אמין לפני אחרי 3.png"
-import result4 from "../../images/ילנה אמין לפני אחרי 4.png"
-import result5 from "../../images/ילנה אמין לפני אחרי 5.png"
-import result6 from "../../images/ילנה אמין לפני אחרי 6.png"
-import result7 from "../../images/ילנה אמין לפני אחרי 7.png"
-import result8 from "../../images/ילנה אמין לפני אחרי 8.png"
-import result9 from "../../images/ילנה אמין לפני אחרי 9.png"
-import result10 from "../../images/ילנה אמין לפני אחרי 10.png"
-import result11 from  "../../images/ילנה אמין לפני אחרי 11.png"
-import result12 from  "../../images/ילנה אמין לפני אחרי 12.png"
-import result13 from  "../../images/ילנה אמין לפני אחרי 13.png"
-import result14 from  "../../images/ילנה אמין לפני אחרי 14.png"
-import result15 from  "../../images/ילנה אמין לפני אחרי 15.png"
+import result1 from "../../images/ילנה לפני אחרי 1.png"
+import result2 from "../../images/ילנה לפני אחרי 2.png"
+import result3 from "../../images/ילנה לפני אחרי 3.png"
+import result4 from "../../images/ילנה לפני אחרי 4.png"
+import result5 from "../../images/ילנה לפני אחרי 5.png"
+import result6 from "../../images/ילנה לפני אחרי 6.png"
+import result7 from "../../images/ילנה לפני אחרי 7.png"
+import result8 from "../../images/ילנה לפני אחרי 8.png"
+import result9 from "../../images/ילנה לפני אחרי 9.png"
+import result10 from "../../images/ילנה לפני אחרי 10.png"
+import result11 from  "../../images/ילנה לפני אחרי 11.png"
+import result12 from  "../../images/ילנה לפני אחרי 12.png"
+import result13 from  "../../images/ילנה לפני אחרי 13.png"
+import result14 from  "../../images/ילנה לפני אחרי 14.png"
+import result15 from  "../../images/ילנה לפני אחרי 15.png"
+import result16 from  "../../images/ילנה אמין לפני אחרי 6.png"
+import result17 from  "../../images/ילנה אמין לפני אחרי 7.png"
+import result18 from  "../../images/ילנה אמין לפני אחרי 8.png"
+import result19 from  "../../images/ילנה אמין לפני אחרי 10.png"
+import result20 from  "../../images/ילנה אמין לפני אחרי 12.png"
+import result21 from  "../../images/ילנה אמין לפני אחרי 13.png"
+import result22 from  "../../images/ילנה אמין לפני אחרי 15.png"
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -49,6 +56,14 @@ const BeforeAfter=()=>{
         },
         {
           type: 'image',
+          src: result16,
+        },
+        {
+          type: 'image',
+          src: result17,
+        },
+        {
+          type: 'image',
           src: result13,
         },
         {
@@ -57,7 +72,15 @@ const BeforeAfter=()=>{
         },
         {
           type: 'image',
+          src: result19,
+        },
+        {
+          type: 'image',
           src: result15,
+        },
+        {
+          type: 'image',
+          src: result18,
         },
         {
           type: 'image',
@@ -70,6 +93,18 @@ const BeforeAfter=()=>{
         {
           type: 'image',
           src: result9,
+        },
+        {
+          type: 'image',
+          src: result20,
+        },
+        {
+          type: 'image',
+          src: result21,
+        },
+        {
+          type: 'image',
+          src: result22,
         },
         {
           type: 'image',

@@ -57,7 +57,7 @@
   border-radius: 20px;
   z-index: 1;
   position: absolute;
-  bottom: 20%;
+  bottom: 10%;
   box-shadow: 
     inset 0 0 20px rgba(253, 245, 241, 0.25),
     0 15px 35px rgba(80, 107, 74, 0.05),
