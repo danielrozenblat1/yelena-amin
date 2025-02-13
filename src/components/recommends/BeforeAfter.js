@@ -7,7 +7,7 @@ import result5 from "../../images/ילנה לפני אחרי 5.png"
 import result6 from "../../images/ילנה לפני אחרי 6.png"
 import result7 from "../../images/ילנה לפני אחרי 7.png"
 import result8 from "../../images/ילנה לפני אחרי 8.png"
-import result9 from "../../images/ילנה לפני אחרי 9.png"
+
 import result10 from "../../images/ילנה לפני אחרי 10.png"
 import result11 from  "../../images/ילנה לפני אחרי 11.png"
 import result12 from  "../../images/ילנה לפני אחרי 12.png"
@@ -21,6 +21,8 @@ import result19 from  "../../images/ילנה אמין לפני אחרי 10.png"
 import result20 from  "../../images/ילנה אמין לפני אחרי 12.png"
 import result21 from  "../../images/ילנה אמין לפני אחרי 13.png"
 import result22 from  "../../images/ילנה אמין לפני אחרי 15.png"
+import result23 from  "../../images/ילנה אמין לפני אחרי 16.png"
+import result24 from  "../../images/ילנה אמין לפני אחרי 17.png"
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -53,6 +55,14 @@ const BeforeAfter=()=>{
         {
           type: 'image',
           src: result12,
+        },
+        {
+          type: 'image',
+          src: result23,
+        },
+        {
+          type: 'image',
+          src: result24,
         },
         {
           type: 'image',
@@ -90,10 +100,7 @@ const BeforeAfter=()=>{
           type: 'image',
           src: result10,
         },
-        {
-          type: 'image',
-          src: result9,
-        },
+      
         {
           type: 'image',
           src: result20,
