@@ -2,7 +2,7 @@ import styles from "./Button.module.css"
 const Button =(props)=>{
 
     const handleButtonClick = () => {
-        const phoneNumber = "+972506308703";
+        const phoneNumber = "+972529408733";
         // Set the message content
         const message =props.message ? props.message :"היי ילנה ,אני רוצה לשמוע ממך עוד על..";
     
