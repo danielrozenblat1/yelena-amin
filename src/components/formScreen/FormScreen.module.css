@@ -1,0 +1,295 @@
+/* Main container with background */
+.formScreenContainer {
+  width: 100%;
+  padding: 4% 0;
+  color: #1a4731; /* Changed to dark green color */
+  overflow: hidden;
+}
+
+/* Title container styles */
+.titleContainer {
+  position: relative;
+  margin: 2% auto;
+  text-align: center;
+  width: 100%; /* Ensure full width */
+  padding: 0 10px; /* Add horizontal padding to prevent text overflow */
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  font-family: 'Assistant', sans-serif;
+  text-align: center;
+  direction: rtl;
+  line-height: 1.2;
+  /* Changed gradient to be visible on light background */
+  background: linear-gradient(135deg, #0e3621 30%, #0a432a 50%, #002a15 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+  padding: 0 1rem;
+  z-index: 2;
+}
+
+.titleEnglish {
+  font-family: "Assistant", sans-serif;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(10, 60, 40, 0.15); /* Changed to dark green with low opacity */
+  font-size: 5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+/* Form container */
+.formContainer {
+  max-width: 600px;
+  width: 90%; /* Use percentage instead of fixed width */
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.8); /* Changed to light background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(26, 71, 49, 0.1); /* Changed border color */
+  direction: rtl;
+  box-sizing: border-box; /* Add box-sizing to include padding in width calculation */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.label {
+  font-family: 'Assistant', sans-serif;
+  font-size: 1.1rem;
+  color: #1a4731; /* Changed to dark green */
+  margin-right: 0.25rem;
+  font-weight: 500; /* Added font weight for better visibility */
+}
+
+.input,
+.textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.9); /* Changed to lighter background */
+  border: 1px solid rgba(26, 71, 49, 0.3); /* Changed border color */
+  color: #0e3621; /* Changed to dark green */
+  font-family: 'AssistantR', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box; /* Add box-sizing to include padding in width calculation */
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 1); /* Changed focus background */
+  border-color: rgba(0, 100, 0, 0.5); /* Changed border color */
+  box-shadow: 0 0 0 3px rgba(0, 100, 0, 0.1);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(26, 71, 49, 0.6); /* Changed placeholder color to darker */
+}
+
+.inputError {
+  border-color: rgba(220, 53, 69, 0.6);
+  box-shadow: 0 0 0 1px rgba(220, 53, 69, 0.2);
+}
+
+.errorText {
+  color: rgba(220, 53, 69, 0.9); /* Changed to a more visible red */
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-family: 'Assistant', sans-serif;
+  font-weight: 500; /* Added font weight for better visibility */
+}
+
+.submitButton {
+  padding: 0.85rem 1.5rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #1a4731 30%, #0e5132 50%, #003b20 90%);
+  color: #fff;
+  font-family: 'Assistant', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 59, 32, 0.3), 
+              0 0 0 1px rgba(0, 100, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 59, 32, 0.4), 
+              0 0 0 1px rgba(0, 100, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.submitButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 59, 32, 0.3), 
+              0 0 0 1px rgba(0, 100, 0, 0.3),
+              inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.submitting {
+  background: linear-gradient(135deg, #003b20 30%, #00331c 50%, #002915 90%);
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.submitted {
+  background: linear-gradient(135deg, #1a4731 30%, #2e8b57 50%, #1a4731 90%);
+  cursor: default;
+}
+
+/* Media queries for different screen sizes */
+@media screen and (max-width: 349px) {
+  .title {
+      font-size: 1.5rem;
+      padding: 0 0.5rem;
+  }
+  .titleEnglish {
+      font-size: 2.5rem;
+  }
+  .formContainer {
+      padding: 1rem; /* Reduced padding */
+      width: 95%; /* Wider container on very small screens */
+  }
+  .label {
+      font-size: 1rem;
+  }
+  .input, 
+  .textarea {
+      padding: 0.6rem 0.8rem;
+  }
+  .submitButton {
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 350px) and (max-width: 450px) {
+  .title {
+      font-size: 1.7rem;
+      padding: 0 0.6rem;
+  }
+  .titleEnglish {
+      font-size: 3rem;
+  }
+  .formContainer {
+      padding: 1.25rem; /* Reduced padding */
+      width: 95%; /* Wider container on small screens */
+  }
+  .submitButton {
+      padding: 0.8rem 1.3rem;
+      font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 451px) and (max-width: 550px) {
+  .title {
+      font-size: 1.9rem;
+      padding: 0 0.7rem;
+  }
+  .titleEnglish {
+      font-size: 3.5rem;
+  }
+  .formContainer {
+      padding: 1.5rem; /* Reduced padding */
+      width: 92%; /* Adjusted width */
+  }
+}
+
+@media screen and (min-width: 551px) and (max-width: 650px) {
+  .title {
+      font-size: 2rem;
+      padding: 0 0.8rem;
+  }
+  .titleEnglish {
+      font-size: 4rem;
+  }
+  .formContainer {
+      width: 90%; /* Adjusted width */
+  }
+}
+
+@media screen and (min-width: 651px) and (max-width: 750px) {
+  .title {
+      font-size: 2.1rem;
+      padding: 0 0.9rem;
+  }
+  .titleEnglish {
+      font-size: 4.2rem;
+  }
+}
+
+@media screen and (min-width: 751px) and (max-width: 850px) {
+  .title {
+      font-size: 2.2rem;
+  }
+  .titleEnglish {
+      font-size: 4.4rem;
+  }
+}
+
+@media screen and (min-width: 851px) and (max-width: 950px) {
+  .title {
+      font-size: 2.3rem;
+  }
+  .titleEnglish {
+      font-size: 4.6rem;
+  }
+}
+
+@media screen and (min-width: 951px) and (max-width: 1050px) {
+  .title {
+      font-size: 2.4rem;
+  }
+  .titleEnglish {
+      font-size: 4.8rem;
+  }
+}
+
+@media screen and (min-width: 1051px) and (max-width: 1150px) {
+  .title {
+      font-size: 2.45rem;
+  }
+  .titleEnglish {
+      font-size: 4.9rem;
+  }
+}
+
+@media screen and (min-width: 1151px) {
+  .title {
+      font-size: 2.5rem;
+  }
+  .titleEnglish {
+      font-size: 5rem;
+  }
+}
